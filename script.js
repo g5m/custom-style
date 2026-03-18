@@ -95,11 +95,9 @@ function finalizarCompra() {
     return; 
   }
   
-  // Pega o valor total do carrinho e joga na tela de pagamento
   const valorTotal = document.getElementById("total").innerText.replace("Total: ", "");
   document.getElementById("total-pagamento").innerText = valorTotal;
 
-  // Fecha o carrinho e abre a tela de pagamento
   fecharCheckout();
   document.getElementById("paymentScreen").style.display = "flex";
   document.getElementById("caixa-pagamento").style.display = "block";
@@ -114,27 +112,21 @@ function voltarParaCarrinho() {
 function simularPagamento(metodo) {
   const tituloPagamento = document.querySelector("#caixa-pagamento h2");
   
-  // Efeito visual de carregamento
   tituloPagamento.innerText = "Processando " + metodo + "...";
   tituloPagamento.style.color = "#aaaaaa";
 
-  // Simula o tempo do servidor do banco (2 segundos)
   setTimeout(() => {
-    // Esconde a tela de escolha e mostra o sucesso!
     document.getElementById("caixa-pagamento").style.display = "none";
     document.getElementById("caixa-sucesso").style.display = "block";
     
-    // Reseta o título para a próxima vez
     tituloPagamento.innerText = "Pagamento";
     tituloPagamento.style.color = "#ffffff";
 
-    // Limpa o carrinho
     carrinho = [];
     atualizarCarrinho();
-  }, 2000); // 2000 milissegundos = 2 segundos
+  }, 2000); 
 }
 
 function voltarParaLoja() {
-  // Fecha a tela de sucesso e volta para a vitrine
   document.getElementById("paymentScreen").style.display = "none";
 }
