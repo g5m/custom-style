@@ -17,7 +17,6 @@
     <div class="caixa">
       <img src="logo.png" alt="Logo" class="logo" onerror="this.style.display='none'">
       <h2>Bem-vindo(a)</h2>
-      <p class="texto-cinza">Faça login para acessar a loja</p>
       <button onclick="entrarNaLoja()">Entrar na Loja</button>
     </div>
   </div>
@@ -53,11 +52,33 @@
       <h2 style="margin-bottom: 20px;">Seu Carrinho</h2>
       <ul id="listaCarrinho" class="lista-carrinho"></ul>
       <h3 id="total" class="preco-destaque">Total: R$ 0,00</h3>
-      <button onclick="finalizarCompra()" style="margin-bottom: 15px;">Finalizar Pedido via WhatsApp</button>
+      <button onclick="finalizarCompra()" style="margin-bottom: 15px;">Ir para o Pagamento</button>
       <a href="#" onclick="fecharCheckout()" class="link-voltar">Continuar Comprando</a>
     </div>
   </div>
+<div id="paymentScreen" class="tela-cheia" style="display: none;">
+    
+    <div class="caixa" id="caixa-pagamento">
+      <h2 style="margin-bottom: 20px;">Pagamento</h2>
+      <p class="texto-cinza">Valor total: <strong id="total-pagamento" class="preco-destaque" style="font-size: 1.2rem;"></strong></p>
 
+      <div class="opcoes-pagamento">
+        <button class="btn-pagamento" onclick="simularPagamento('Pix')">❖ Pix (Aprovação na hora)</button>
+        <button class="btn-pagamento" onclick="simularPagamento('Cartão de Crédito')">💳 Cartão de Crédito</button>
+        <button class="btn-pagamento" onclick="simularPagamento('Cartão de Débito')">💳 Cartão de Débito</button>
+      </div>
+
+      <a href="#" onclick="voltarParaCarrinho()" class="link-voltar" style="display: block; margin-top: 20px;">Voltar para o Carrinho</a>
+    </div>
+
+    <div class="caixa" id="caixa-sucesso" style="display: none; text-align: center;">
+      <h1 style="font-size: 3.5rem; margin: 0; color: #b5e3d8;">✅</h1>
+      <h2 style="margin: 15px 0;">Pagamento Aprovado!</h2>
+      <p class="texto-cinza">Obrigado por comprar na Custom Style. Seu pedido já está sendo separado.</p>
+      <button onclick="voltarParaLoja()" style="margin-top: 25px;">Continuar Comprando</button>
+    </div>
+
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
