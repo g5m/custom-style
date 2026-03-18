@@ -42,7 +42,7 @@ button:hover { transform: scale(1.05); }
 
 /* Layout da Loja */
 header { display: flex; justify-content: space-between; align-items: center; padding: 20px; }
-.logo { width: 120px; margin-bottom: 15px; }
+.logo { width: 200px; margin-bottom: 15px; }
 nav a { color: #aaaaaa; text-decoration: none; font-weight: bold; font-size: 1.1rem;}
 nav a:hover { color: #ffffff; }
 .hero { text-align: center; padding: 40px 20px; }
