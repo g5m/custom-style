@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Custom Style</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="loader"><h1>Custom Style</h1></div>
+
+<div class="login" id="login">
+  <div class="login-box">
+    <h2>Login</h2>
+    <input placeholder="Email">
+    <input placeholder="Senha" type="password">
+    <button onclick="enterSite()">Entrar</button>
+  </div>
+</div>
+
+<header>
+  <img src="logo.png" class="logo">
+  <nav>
+    <a href="#">Loja</a>
+    <a href="#">Admin</a>
+    <a href="#" onclick="openCheckout()">Carrinho (0)</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Vista seu <span>Estilo</span></h1>
+  <p>Oversized premium. Minimalismo urbano.</p>
+  <button>Comprar Agora</button>
+</section>
+
+<section class="products">
+
+<!-- 9 produtos -->
+<div class="card" onclick="openProduct('Oversized Essential',129.9)">
+<h3>Oversized Essential</h3><p>R$129,90</p></div>
+
+<div class="card" onclick="openProduct('Urban Fit Tee',119.9)">
+<h3>Urban Fit Tee</h3><p>R$119,90</p></div>
+
+<div class="card" onclick="openProduct('Minimal Drop',139.9)">
+<h3>Minimal Drop</h3><p>R$139,90</p></div>
+
+<div class="card" onclick="openProduct('Street Classic',129.9)">
+<h3>Street Classic</h3><p>R$129,90</p></div>
+
+<div class="card" onclick="openProduct('Black Core',149.9)">
+<h3>Black Core</h3><p>R$149,90</p></div>
+
+<div class="card" onclick="openProduct('Soft Beige Tee',119.9)">
+<h3>Soft Beige Tee</h3><p>R$119,90</p></div>
+
+<div class="card" onclick="openProduct('Muted Pink Fit',129.9)">
+<h3>Muted Pink Fit</h3><p>R$129,90</p></div>
+
+<div class="card" onclick="openProduct('Sky Blue Oversized',119.9)">
+<h3>Sky Blue Oversized</h3><p>R$119,90</p></div>
+
+<div class="card" onclick="openProduct('Clean White Drop',139.9)">
+<h3>Clean White Drop</h3><p>R$139,90</p></div>
+
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2 id="productName"></h2>
+    <p id="productPrice"></p>
+    <button onclick="addToCart()">Adicionar</button>
+    <button onclick="closeModal()">Fechar</button>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="checkout" id="checkout">
+  <div class="checkout-box">
+    <h2>Finalizar Compra</h2>
+    <p id="checkoutTotal"></p>
+    <button onclick="payPix()">PIX</button>
+    <button onclick="payCard()">Cartão</button>
+    <button onclick="closeCheckout()">Cancelar</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

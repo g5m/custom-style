@@ -1,0 +1,55 @@
+body {margin:0;font-family:Arial;background:#0d0d0d;color:white;}
+
+#loader {position:fixed;width:100%;height:100%;background:#0d0d0d;
+display:flex;justify-content:center;align-items:center;z-index:999;}
+
+#loader h1 {
+background:linear-gradient(90deg,#f8c8dc,#b5e3d8);
+-webkit-background-clip:text;color:transparent;
+}
+
+.login {position:fixed;width:100%;height:100%;background:#0d0d0d;
+display:flex;justify-content:center;align-items:center;}
+
+.login-box {background:#111;padding:40px;border-radius:20px;text-align:center;}
+
+header {display:flex;justify-content:space-between;padding:20px;}
+
+.logo {width:120px;}
+
+nav a {color:#aaa;margin:10px;text-decoration:none;}
+
+.hero {text-align:center;padding:80px;}
+
+.hero span {
+background:linear-gradient(90deg,#f8c8dc,#b5e3d8);
+-webkit-background-clip:text;color:transparent;
+}
+
+button {
+padding:12px 25px;border:none;border-radius:25px;
+background:linear-gradient(90deg,#f8c8dc,#b5e3d8);
+cursor:pointer;
+}
+
+.products {
+display:grid;grid-template-columns:repeat(3,1fr);
+gap:20px;padding:40px;
+}
+
+.card {
+background:#1a1a1a;padding:30px;border-radius:15px;
+text-align:center;cursor:pointer;transition:0.3s;
+}
+
+.card:hover {transform:translateY(-5px);}
+
+.modal,.checkout {
+position:fixed;width:100%;height:100%;
+background:rgba(0,0,0,0.9);
+display:none;justify-content:center;align-items:center;
+}
+
+.modal-content,.checkout-box {
+background:#111;padding:40px;border-radius:20px;text-align:center;
+}

@@ -1,0 +1,43 @@
+let cart = 0;
+let total = 0;
+let currentPrice = 0;
+
+window.onload = () => {
+  setTimeout(()=>document.getElementById("loader").style.display="none",1000);
+};
+
+function enterSite(){
+  document.getElementById("login").style.display="none";
+}
+
+function openProduct(name,price){
+  currentPrice = price;
+  document.getElementById("productName").innerText=name;
+  document.getElementById("productPrice").innerText="R$ "+price;
+  document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+
+function addToCart(){
+  cart++;
+  total+=currentPrice;
+  document.querySelector("nav a:last-child").innerText=
+  "Carrinho ("+cart+") - R$ "+total.toFixed(2);
+  closeModal();
+}
+
+function openCheckout(){
+  document.getElementById("checkoutTotal").innerText=
+  "Total: R$ "+total.toFixed(2);
+  document.getElementById("checkout").style.display="flex";
+}
+
+function closeCheckout(){
+  document.getElementById("checkout").style.display="none";
+}
+
+function payPix(){alert("Pagamento PIX simulado ✅");}
+function payCard(){alert("Pagamento cartão simulado 💳");}
