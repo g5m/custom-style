@@ -181,3 +181,99 @@ nav a:hover { color: #ffffff; }
   font-weight: bold;
   outline: none;
 }
+/* =========================================
+   RODAPÉ (FOOTER)
+   ========================================= */
+.rodape {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 60px 40px;
+  background: #000000;
+  border-top: 1px solid #222;
+  margin-top: 40px;
+}
+
+/* --- Coluna da Esquerda --- */
+.rodape-esq {
+  flex: 1;
+  min-width: 300px;
+}
+
+.rodape-esq ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rodape-esq li {
+  border-bottom: 1px solid #ffffff; 
+}
+
+.rodape-esq li a {
+  display: block;
+  padding: 10px 0;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 2.8rem; 
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: 'Impact', 'Arial Black', sans-serif; 
+  transition: color 0.3s;
+  letter-spacing: -1px;
+}
+
+.rodape-esq li a:hover {
+  color: #b5e3d8; 
+}
+
+/* --- Coluna da Direita --- */
+.rodape-dir {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 0.9rem;
+}
+
+.rodape-dir a {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.rodape-dir span {
+  display: block;
+  color: #888888;
+  font-size: 0.75rem;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.rodape-contato {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* --- Selos de Pagamento --- */
+.rodape-pagamento {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.badge-pag {
+  background: #ffffff;
+  color: #000000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  font-family: Arial, sans-serif;
+}
