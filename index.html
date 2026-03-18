@@ -38,10 +38,29 @@
   </div>
 
   <div id="modal" class="tela-cheia" style="display: none;">
-    <div class="caixa">
-      <img id="modalImg" src="" alt="Produto" class="img-produto-destaque">
-      <h2 id="modalNome"></h2>
-      <p id="modalPreco" class="preco-destaque"></p>
+    <div class="caixa" style="max-width: 450px;"> <img id="modalImg" src="" alt="Produto" class="img-produto-destaque" style="height: 280px;">
+      <h2 id="modalNome" style="margin-bottom: 5px;"></h2>
+      <p id="modalPreco" class="preco-destaque" style="margin-top: 5px;"></p>
+
+      <div style="text-align: left; margin-bottom: 15px;">
+        <p class="texto-cinza" style="margin-bottom: 8px; font-size: 0.9rem;">Escolha o Tamanho:</p>
+        <div class="seletor-tamanho">
+          <div class="btn-tamanho" onclick="selecionarTamanho('P', this)">P</div>
+          <div class="btn-tamanho" onclick="selecionarTamanho('M', this)">M</div>
+          <div class="btn-tamanho" onclick="selecionarTamanho('G', this)">G</div>
+          <div class="btn-tamanho" onclick="selecionarTamanho('GG', this)">GG</div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+        <p class="texto-cinza" style="margin: 0; font-size: 0.9rem;">Quantidade:</p>
+        <div class="controle-qtd">
+          <button type="button" onclick="mudarQtd(-1)">-</button>
+          <input type="number" id="modalQtd" value="1" readonly>
+          <button type="button" onclick="mudarQtd(1)">+</button>
+        </div>
+      </div>
+
       <button onclick="addCarrinho()" style="margin-bottom: 15px;">Adicionar ao Carrinho</button>
       <a href="#" onclick="fecharModal()" class="link-voltar">Voltar para loja</a>
     </div>
