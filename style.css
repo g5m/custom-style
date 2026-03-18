@@ -91,3 +91,29 @@ nav a:hover { color: #ffffff; }
 /* Lista do Carrinho */
 .lista-carrinho { list-style: none; padding: 0; text-align: left; max-height: 250px; overflow-y: auto; margin-bottom: 20px; }
 .cart-item { display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #333; padding-bottom: 8px; }
+
+/* =========================================
+   Botões de Pagamento (Pix, Cartões)
+   ========================================= */
+.opcoes-pagamento {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-pagamento {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid #333333;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: normal;
+  transition: all 0.3s ease;
+}
+
+.btn-pagamento:hover {
+  background: #222222;
+  border-color: #b5e3d8;
+  transform: translateY(-2px);
+}
