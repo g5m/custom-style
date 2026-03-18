@@ -85,17 +85,56 @@ function atualizarCarrinho() {
   document.getElementById("cart-badge").innerText = qtd;
 }
 
-function finalizarCompra() {
-  if(carrinho.length === 0) { alert("Adicione algo ao carrinho primeiro!"); return; }
-  
-  let msg = "Olá! Gostaria de finalizar o meu pedido do projeto:%0A%0A";
-  carrinho.forEach(item => { msg += `- ${item.quantidade}x ${item.nome}%0A`; });
-  msg += `%0A*${document.getElementById("total").innerText}*`;
+// ==========================================
+// FLUXO DE CHECKOUT E PAGAMENTO SIMULADO
+// ==========================================
 
-  // Coloque o seu número de WhatsApp aqui (com DDI e DDD)
-  window.open(`https://wa.me/5511999999999?text=${msg}`, '_blank');
+function finalizarCompra() {
+  if(carrinho.length === 0) { 
+    alert("Adicione algo ao carrinho primeiro!"); 
+    return; 
+  }
   
-  carrinho = [];
-  atualizarCarrinho();
+  // Pega o valor total do carrinho e joga na tela de pagamento
+  const valorTotal = document.getElementById("total").innerText.replace("Total: ", "");
+  document.getElementById("total-pagamento").innerText = valorTotal;
+
+  // Fecha o carrinho e abre a tela de pagamento
   fecharCheckout();
+  document.getElementById("paymentScreen").style.display = "flex";
+  document.getElementById("caixa-pagamento").style.display = "block";
+  document.getElementById("caixa-sucesso").style.display = "none";
+}
+
+function voltarParaCarrinho() {
+  document.getElementById("paymentScreen").style.display = "none";
+  abrirCheckout();
+}
+
+function simularPagamento(metodo) {
+  const tituloPagamento = document.querySelector("#caixa-pagamento h2");
+  
+  // Efeito visual de carregamento
+  tituloPagamento.innerText = "Processando " + metodo + "...";
+  tituloPagamento.style.color = "#aaaaaa";
+
+  // Simula o tempo do servidor do banco (2 segundos)
+  setTimeout(() => {
+    // Esconde a tela de escolha e mostra o sucesso!
+    document.getElementById("caixa-pagamento").style.display = "none";
+    document.getElementById("caixa-sucesso").style.display = "block";
+    
+    // Reseta o título para a próxima vez
+    tituloPagamento.innerText = "Pagamento";
+    tituloPagamento.style.color = "#ffffff";
+
+    // Limpa o carrinho
+    carrinho = [];
+    atualizarCarrinho();
+  }, 2000); // 2000 milissegundos = 2 segundos
+}
+
+function voltarParaLoja() {
+  // Fecha a tela de sucesso e volta para a vitrine
+  document.getElementById("paymentScreen").style.display = "none";
 }
