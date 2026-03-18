@@ -3,204 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Style</title>
+  <title>Custom Style Elite</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f6f6f6;
-    }
+    body {margin:0;font-family:'Inter',sans-serif;background:linear-gradient(to bottom,#f7f7fb,#eef2ff,#f3e8ff);} 
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
+    header{display:flex;justify-content:space-between;padding:20px;background:rgba(255,255,255,.8);backdrop-filter:blur(10px);position:sticky;top:0;z-index:10}
 
-    .logo img {
-      width: 160px;
-    }
+    .logo img{width:210px}
 
-    .cart-btn {
-      cursor: pointer;
-      font-weight: bold;
-    }
+    .cart-btn{cursor:pointer;font-weight:bold;position:relative}
 
-    h1 {
-      text-align: center;
-      font-family: 'Poppins', sans-serif;
-    }
+    .badge{position:absolute;top:-8px;right:-10px;background:red;color:white;border-radius:50%;padding:2px 6px;font-size:12px}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
+    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;padding:20px}
 
-    .product {
-      background: white;
-      padding: 15px;
-      border-radius: 15px;
-      text-align: center;
-      transition: 0.3s;
-      cursor: pointer;
-    }
+    .product{background:white;border-radius:15px;padding:15px;text-align:center;transition:.3s;cursor:pointer}
+    .product:hover{transform:scale(1.05)}
+    .product img{width:100%;border-radius:10px}
 
-    .product:hover {
-      transform: scale(1.05);
-    }
+    button{padding:10px;border:none;background:black;color:white;border-radius:8px;cursor:pointer;transition:.2s}
+    button:hover{transform:scale(1.05)}
 
-    .product img {
-      width: 100%;
-      border-radius: 10px;
-    }
+    .modal,.checkout{display:none;position:fixed;width:100%;height:100%;top:0;left:0;background:rgba(0,0,0,.6)}
 
-    button {
-      margin-top: 10px;
-      padding: 10px;
-      border: none;
-      background: black;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+    .box{background:white;margin:8% auto;padding:20px;width:320px;border-radius:15px;text-align:center;animation:fade .3s}
 
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-    }
+    @keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1}}
 
-    .modal-content {
-      background: white;
-      padding: 20px;
-      margin: 10% auto;
-      width: 300px;
-      border-radius: 15px;
-      text-align: center;
-    }
+    .cart{position:fixed;right:0;top:0;width:320px;height:100%;background:white;padding:20px;display:none;overflow:auto;box-shadow:-2px 0 10px rgba(0,0,0,.1)}
 
-    .close {
-      cursor: pointer;
-      float: right;
-      font-size: 20px;
-    }
+    .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:black;color:white;padding:10px 20px;border-radius:20px;display:none}
 
-    /* Cart */
-    .cart {
-      position: fixed;
-      right: 0;
-      top: 0;
-      width: 300px;
-      height: 100%;
-      background: white;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      display: none;
-    }
+    .loading{position:fixed;width:100%;height:100%;background:white;display:flex;justify-content:center;align-items:center;font-size:20px;z-index:999}
   </style>
 </head>
 <body>
 
+<div class="loading" id="loading">Carregando...</div>
+
 <header>
-  <div class="logo">
-    <img src="logo.png">
-  </div>
-  <div class="cart-btn" onclick="abrirCarrinho()">🛒 Carrinho</div>
+  <div class="logo"><img src="logo.png"></div>
+  <div class="cart-btn" onclick="toggleCart()">🛒 <span id="count" class="badge">0</span></div>
 </header>
 
-<h1>Custom Style</h1>
+<h1 style="text-align:center">Custom Style</h1>
 
 <div class="products" id="products"></div>
 
-<!-- Modal -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="fecharModal()">&times;</span>
-    <img id="modalImg">
-    <h2 id="modalNome"></h2>
-    <button onclick="addCarrinhoModal()">Adicionar ao Carrinho</button>
-  </div>
+<div class="modal" id="modal"><div class="box">
+<span onclick="closeModal()" style="float:right;cursor:pointer">✖</span>
+<img id="mImg"><h2 id="mNome"></h2><p id="mPreco"></p>
+<button onclick="addCart()">Adicionar</button>
+</div></div>
+
+<div class="cart" id="cart">
+<h2>Carrinho</h2>
+<ul id="list"></ul>
+<p id="total"></p>
+<button onclick="openCheckout()">Finalizar</button>
+<button onclick="toggleCart()">Voltar</button>
 </div>
 
-<!-- Cart -->
-<div class="cart" id="cart">
-  <h2>Carrinho</h2>
-  <ul id="listaCarrinho"></ul>
-</div>
+<div class="checkout" id="checkout"><div class="box">
+<h2>Pagamento</h2>
+<button onclick="pay('Pix')">Pix</button>
+<button onclick="pay('Cartão')">Cartão</button>
+<button onclick="pay('Débito')">Débito</button>
+</div></div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-  const produtos = [
-    {nome: "Oversized Black", img: "https://via.placeholder.com/300"},
-    {nome: "Oversized White", img: "https://via.placeholder.com/300"},
-    {nome: "Street Basic", img: "https://via.placeholder.com/300"},
-    {nome: "Urban Fit", img: "https://via.placeholder.com/300"},
-    {nome: "Classic Tee", img: "https://via.placeholder.com/300"},
-    {nome: "Minimal Shirt", img: "https://via.placeholder.com/300"},
-    {nome: "Loose Style", img: "https://via.placeholder.com/300"},
-    {nome: "Soft Wear", img: "https://via.placeholder.com/300"},
-    {nome: "Modern Fit", img: "https://via.placeholder.com/300"}
-  ];
+const produtos=[
+{n:'Oversized Black',i:'https://via.placeholder.com/300',p:120},
+{n:'Oversized White',i:'https://via.placeholder.com/300',p:90},
+{n:'Street Basic',i:'https://via.placeholder.com/300',p:80},
+{n:'Urban Fit',i:'https://via.placeholder.com/300',p:140},
+{n:'Classic Tee',i:'https://via.placeholder.com/300',p:70},
+{n:'Minimal Shirt',i:'https://via.placeholder.com/300',p:110},
+{n:'Loose Style',i:'https://via.placeholder.com/300',p:130},
+{n:'Soft Wear',i:'https://via.placeholder.com/300',p:100},
+{n:'Modern Fit',i:'https://via.placeholder.com/300',p:95}
+];
 
-  let carrinho = [];
-  let produtoAtual = null;
+let cart=[];let current;
 
-  function renderProdutos() {
-    const container = document.getElementById("products");
-    produtos.forEach(p => {
-      container.innerHTML += `
-        <div class="product" onclick="abrirProduto('${p.nome}', '${p.img}')">
-          <img src="${p.img}">
-          <h3>${p.nome}</h3>
-        </div>
-      `;
-    });
-  }
+function render(){
+products.forEach(p=>{
+productsEl.innerHTML+=`<div class='product' onclick="openP('${p.n}','${p.i}',${p.p})">
+<img src='${p.i}'><h3>${p.n}</h3><p>R$ ${p.p}</p></div>`});}
 
-  function abrirProduto(nome, img) {
-    produtoAtual = nome;
-    document.getElementById("modal").style.display = "block";
-    document.getElementById("modalNome").innerText = nome;
-    document.getElementById("modalImg").src = img;
-  }
+function openP(n,i,p){current={n,p};modal.style.display='block';mNome.innerText=n;mImg.src=i;mPreco.innerText='R$ '+p}
+function closeModal(){modal.style.display='none'}
 
-  function fecharModal() {
-    document.getElementById("modal").style.display = "none";
-  }
+function addCart(){cart.push(current);updateCart();toastMsg('Adicionado ao carrinho');closeModal()}
 
-  function addCarrinhoModal() {
-    carrinho.push(produtoAtual);
-    atualizarCarrinho();
-    fecharModal();
-  }
+function updateCart(){list.innerHTML='';let t=0;cart.forEach(i=>{list.innerHTML+=`<li>${i.n} - R$ ${i.p}</li>`;t+=i.p});total.innerText='Total: R$ '+t;count.innerText=cart.length}
 
-  function atualizarCarrinho() {
-    const lista = document.getElementById("listaCarrinho");
-    lista.innerHTML = "";
-    carrinho.forEach(item => {
-      lista.innerHTML += `<li>${item}</li>`;
-    });
-  }
+function toggleCart(){cart.style.display=cart.style.display==='block'?'none':'block'}
 
-  function abrirCarrinho() {
-    const cart = document.getElementById("cart");
-    cart.style.display = cart.style.display === "block" ? "none" : "block";
-  }
+function openCheckout(){checkout.style.display='block'}
 
-  renderProdutos();
+function pay(type){toastMsg('Pagamento via '+type+' aprovado!');cart=[];updateCart();checkout.style.display='none'}
+
+function toastMsg(msg){toast.innerText=msg;toast.style.display='block';setTimeout(()=>toast.style.display='none',2000)}
+
+setTimeout(()=>{loading.style.display='none';render()},1200);
 </script>
 
 </body>
