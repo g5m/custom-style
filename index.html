@@ -3,76 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Style | Streetwear</title>
+  <title>Custom Style | Loja Virtual</title>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <div id="loader">
+    <h1>Carregando...</h1>
+  </div>
 
-  <style>
-    :root {
-      --grad-1: #fdfbfb;
-      --grad-2: #ebedee;
-      --accent: #111;
-      --text: #333;
-      --radius: 12px;
-    }
+  <div class="login" id="loginScreen">
+    <div class="login-box">
+      <img src="logo.png" alt="Logo" class="logo" style="margin-bottom: 20px;" onerror="this.style.display='none'">
+      <h2>Bem-vindo(a)</h2>
+      <p style="color: #aaa; margin-bottom: 30px;">Faça login para acessar a loja</p>
+      <button onclick="entrarNaLoja()">Entrar na Loja</button>
+    </div>
+  </div>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <div id="mainContent" style="display: none;">
+    <header>
+      <img src="logo.png" alt="Logo" class="logo" onerror="this.src='https://via.placeholder.com/120x40?text=LOGO'">
+      <nav>
+        <a href="#" onclick="abrirCheckout()">🛒 Carrinho (<span id="cart-badge">0</span>)</a>
+      </nav>
+    </header>
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 100%);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+    <section class="hero">
+      <h1>A nova coleção chegou. <br><span>Seja exclusivo.</span></h1>
+      <p style="color: #aaa; margin-top: 10px;">Streetwear minimalista para quem vive o estilo.</p>
+    </section>
 
-    /* Cabeçalho Glassmorphism */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 5%;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(255,255,255,0.5);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-    }
+    <div class="products" id="products"></div>
+  </div>
 
-    .logo {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: -1px;
-      color: var(--accent);
-    }
+  <div class="modal" id="modal">
+    <div class="modal-content" style="max-width: 350px;">
+      <img id="modalImg" src="" alt="Produto" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
+      <h2 id="modalNome"></h2>
+      <p id="modalPreco" style="font-size: 1.5rem; font-weight: bold; margin: 15px 0; color: #b5e3d8;"></p>
+      <button style="width: 100%; margin-bottom: 15px;" onclick="addCarrinhoModal()">Adicionar ao Carrinho</button>
+      <a href="#" onclick="fecharModal()" style="color: #aaa; text-decoration: none; font-size: 0.9rem;">Voltar</a>
+    </div>
+  </div>
 
-    .cart-btn {
-      cursor: pointer;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: white;
-      padding: 8px 16px;
-      border-radius: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: 0.3s ease;
-    }
+  <div class="checkout" id="checkout">
+    <div class="checkout-box" style="width: 90%; max-width: 400px;">
+      <h2 style="margin-bottom: 20px;">Seu Carrinho</h2>
+      <ul id="listaCarrinho" style="list-style: none; padding: 0; text-align: left; margin-bottom: 20px; max-height: 250px; overflow-y: auto;">
+        </ul>
+      <h3 id="total" style="margin-bottom: 20px; color: #b5e3d8;">Total: R$ 0,00</h3>
+      <button style="width: 100%; margin-bottom: 15px;" onclick="finalizarCompra()">Finalizar Pedido</button>
+      <a href="#" onclick="fecharCheckout()" style="color: #aaa; text-decoration: none; font-size: 0.9rem;">Continuar Comprando</a>
+    </div>
+  </div>
 
-    .cart-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    }
-
-    .badge {
-      background: var(--accent);
-      color: white;
-      font-size: 0.
+  <script src="script.js"></script>
+</body>
+</html>
