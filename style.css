@@ -117,3 +117,67 @@ nav a:hover { color: #ffffff; }
   border-color: #b5e3d8;
   transform: translateY(-2px);
 }
+/* =========================================
+   Novos Estilos: Tamanho e Quantidade
+   ========================================= */
+/* Tamanho da Logo Aumentado (caso não tenha achado lá em cima) */
+.logo { width: 180px !important; margin-bottom: 15px; }
+
+/* Aumenta a caixa do modal */
+#modal .caixa { max-width: 500px; }
+
+.seletor-tamanho {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-tamanho {
+  background: #222;
+  color: #aaa;
+  border: 1px solid #444;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+  flex: 1; /* Faz todos terem a mesma largura */
+  text-align: center;
+}
+
+/* Quando o botão de tamanho é clicado */
+.btn-tamanho.selecionado {
+  background: #b5e3d8;
+  color: #000;
+  border-color: #b5e3d8;
+}
+
+.controle-qtd {
+  display: flex;
+  align-items: center;
+  background: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.controle-qtd button {
+  background: transparent;
+  color: #fff;
+  width: 40px;
+  padding: 10px 0;
+  border-radius: 0;
+}
+
+.controle-qtd button:hover { transform: none; background: #333; }
+
+.controle-qtd input {
+  width: 50px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  outline: none;
+}
