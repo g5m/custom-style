@@ -9,6 +9,7 @@ const produtos = [
 
 let carrinho = [];
 let produtoSelecionado = null;
+let tamanhoSelecionado = null;
 
 const formatarDinheiro = (valor) => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
@@ -42,23 +43,75 @@ function abrirProduto(id) {
   document.getElementById("modalNome").innerText = produtoSelecionado.nome;
   document.getElementById("modalImg").src = produtoSelecionado.img;
   document.getElementById("modalPreco").innerText = formatarDinheiro(produtoSelecionado.preco);
+  
+  // Reseta as escolhas sempre que abre um produto novo
+  tamanhoSelecionado = null;
+  document.getElementById("modalQtd").value = 1;
+  document.querySelectorAll('.btn-tamanho').forEach(b => b.classList.remove('selecionado'));
+
   document.getElementById("modal").style.display = "flex";
 }
 
+// NOVAS FUNÇÕES: Controlam o tamanho e os botões de + e -
+function selecionarTamanho(tam, elemento) {
+  tamanhoSelecionado = tam;
+  document.querySelectorAll('.btn-tamanho').forEach(b => b.classList.remove('selecionado'));
+  elemento.classList.add('selecionado');
+}
+
+function mudarQtd(valor) {
+  const input = document.getElementById("modalQtd");
+  let novaQtd = parseInt(input.value) + valor;
+  if(novaQtd >= 1) { input.value = novaQtd; } // Não deixa a quantidade ser zero
+}
 function fecharModal() { document.getElementById("modal").style.display = "none"; }
 function abrirCheckout() { document.getElementById("checkout").style.display = "flex"; }
 function fecharCheckout() { document.getElementById("checkout").style.display = "none"; }
 
 function addCarrinho() {
-  const itemJaExiste = carrinho.find(item => item.id === produtoSelecionado.id);
-  if(itemJaExiste) {
-    itemJaExiste.quantidade += 1;
-  } else {
-    carrinho.push({ ...produtoSelecionado, quantidade: 1 });
+  if(!tamanhoSelecionado) {
+    alert("⚠️ Por favor, escolha um tamanho antes de adicionar ao carrinho!");
+    return;
   }
+
+  const qtdEscolhida = parseInt(document.getElementById("modalQtd").value);
+
+  // Procura se ESSE produto COM ESSE tamanho já existe no carrinho
+  const itemJaExiste = carrinho.find(item => item.id === produtoSelecionado.id && item.tamanho === tamanhoSelecionado);
+  
+  if(itemJaExiste) {
+    itemJaExiste.quantidade += qtdEscolhida;
+  } else {
+    carrinho.push({ ...produtoSelecionado, quantidade: qtdEscolhida, tamanho: tamanhoSelecionado });
+  }
+  
   atualizarCarrinho();
   fecharModal();
   alert("✅ Adicionado ao carrinho com sucesso!");
+}
+
+function atualizarCarrinho() {
+  const lista = document.getElementById("listaCarrinho");
+  let total = 0; let qtd = 0;
+  lista.innerHTML = "";
+
+  if(carrinho.length === 0) {
+    lista.innerHTML = "<p style='color:#aaa; text-align:center;'>Seu carrinho está vazio</p>";
+  }
+
+  carrinho.forEach(item => {
+    total += item.preco * item.quantidade;
+    qtd += item.quantidade;
+    lista.innerHTML += `
+      <li class="cart-item">
+        <span>${item.nome} <b>(${item.tamanho})</b> <b style="color:#b5e3d8;">(x${item.quantidade})</b></span>
+        <span>${formatarDinheiro(item.preco * item.quantidade)}</span>
+      </li>
+    `;
+  });
+
+  document.getElementById("total").innerText = "Total: " + formatarDinheiro(total);
+  document.getElementById("cart-badge").innerText = qtd;
 }
 
 function atualizarCarrinho() {
