@@ -1,44 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Style | Loja Virtual</title>
-  
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <div id="loader">
-    <h1>Carregando...</h1>
-  </div>
-
-  <div class="login" id="loginScreen">
-    <div class="login-box">
-      <img src="logo.png" alt="Logo" class="logo" style="margin-bottom: 20px;" onerror="this.style.display='none'">
-      <h2>Bem-vindo(a)</h2>
-      <p style="color: #aaa; margin-bottom: 30px;">Faça login para acessar a loja</p>
-      <button onclick="entrarNaLoja()">Entrar na Loja</button>
-    </div>
-  </div>
-
-  <div id="mainContent" style="display: none;">
-    <header>
-      <img src="logo.png" alt="Logo" class="logo" onerror="this.src='https://via.placeholder.com/120x40?text=LOGO'">
-      <nav>
-        <a href="#" onclick="abrirCheckout()">🛒 Carrinho (<span id="cart-badge">0</span>)</a>
-      </nav>
-    </header>
-
-    <section class="hero">
-      <h1>A nova coleção chegou. <br><span>Seja exclusivo.</span></h1>
-      <p style="color: #aaa; margin-top: 10px;">Streetwear minimalista para quem vive o estilo.</p>
-    </section>
-
-    <div class="products" id="products"></div>
-  </div>
-
-  <div class="modal" id="modal">
+<div class="modal" id="modal" style="display: none;">
     <div class="modal-content" style="max-width: 350px;">
       <img id="modalImg" src="" alt="Produto" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
       <h2 id="modalNome"></h2>
@@ -48,7 +8,7 @@
     </div>
   </div>
 
-  <div class="checkout" id="checkout">
+  <div class="checkout" id="checkout" style="display: none;">
     <div class="checkout-box" style="width: 90%; max-width: 400px;">
       <h2 style="margin-bottom: 20px;">Seu Carrinho</h2>
       <ul id="listaCarrinho" style="list-style: none; padding: 0; text-align: left; margin-bottom: 20px; max-height: 250px; overflow-y: auto;">
@@ -58,7 +18,3 @@
       <a href="#" onclick="fecharCheckout()" style="color: #aaa; text-decoration: none; font-size: 0.9rem;">Continuar Comprando</a>
     </div>
   </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
