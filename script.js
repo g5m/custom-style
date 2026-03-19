@@ -3,12 +3,12 @@
 // ==========================================
 const produtos = [
   { id: 1, nome: "Camiseta Premium - Preto", img: "https://acdn-us.mitiendanube.com/stores/002/528/360/products/1-618f6b4ab8e674e78e17407569774936-1024-1024.webp", preco: 117.60 },
-  { id: 2, nome: "Oversized White", img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80", preco: 90 },
-  { id: 3, nome: "Street Basic Hoodie", img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=500&q=80", preco: 180 },
-  { id: 4, nome: "Urban Cap", img: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=500&q=80", preco: 60 },
-  { id: 5, nome: "Classic Tee Earth", img: "https://images.unsplash.com/photo-1503341455253-b2e723bb3db8?auto=format&fit=crop&w=500&q=80", preco: 70 },
-  { id: 6, nome: "Minimal Jacket", img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=500&q=80", preco: 210 }
-];
+  { id: 2, nome: "Camiseta Premium - Branco", img: "https://acdn-us.mitiendanube.com/stores/002/528/360/products/5-b7bcf14bf8d3224f9617407573073882-1024-1024.webp", preco: 90 },
+  { id: 3, nome: "Moletom Canguru Boxy - Preto", img: "https://acdn-us.mitiendanube.com/stores/002/528/360/products/capas-dos-produtos-40-81424877e1ee2437f717461988557296-1024-1024.webp", preco: 139.90 },
+  { id: 4, nome: "Moletom com Zíper - Preto", img: "https://acdn-us.mitiendanube.com/stores/002/528/360/products/capas-dos-produtos-18-4e24a48d047f8dfa7717425876875083-1024-1024.webp", preco: 147.90 },
+  { id: 5, nome: "Moletom Careca Boxy - Preto", img: "https://acdn-us.mitiendanube.com/stores/002/528/360/products/capas-dos-produtos-38-fd688495f46ffffc7e17456103602404-1024-1024.webp", preco: 125.40 },
+  { id: 6, nome: "Camiseta Baby Tee - Branco", img: "https://acdn-us.mitiendanube.com/stores/002/528/360/products/4-020e821136b4fb3bf517654664508412-1024-1024.webp", preco: 79.90 }
+  ];
 
 // ==========================================
 // 2. VARIÁVEIS GLOBAIS E UTILIDADES
