@@ -52,27 +52,29 @@ button:hover { transform: scale(1.05); background: #222222; }
    ========================================= */
 header { 
   display: grid; 
-  grid-template-columns: 1fr auto 1fr; /* O segredo para cravar a logo no centro exato */
+  grid-template-columns: 1fr auto 1fr; /* Cria 3 colunas invisíveis */
   align-items: center; 
-  padding: 10px 5%; /* Diminuímos o espaçamento para a faixa preta ficar menor */
+  padding: 10px 5%; 
   background-color: #000000; 
   color: #ffffff;
 }
 
-/* Container da logo no centro */
+/* Força a logo a ficar na coluna 2 (Centro exato) */
 .logo-container {
+  grid-column: 2;
   display: flex;
   justify-content: center;
 }
 
-/* Carrinho jogado para a extrema direita */
+/* Força o carrinho a ficar na coluna 3 (Direita) */
 header nav {
+  grid-column: 3;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-/* Tamanho da logo ajustado para não estourar a faixa preta */
+/* Tamanho da logo ajustado */
 header .logo { 
   width: 180px !important; 
   height: auto;
@@ -80,7 +82,6 @@ header .logo {
 
 header nav a { color: #cccccc; text-decoration: none; font-size: 1.1rem; font-family: 'Arial Black', sans-serif; }
 header nav a:hover { color: #ffffff; }
-
 .hero { text-align: center; padding: 60px 20px; }
 .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
 
