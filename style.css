@@ -60,7 +60,7 @@ header {
 
 /* Deixa a logo branca no cabeçalho preto (se ela for originalmente preta) */
 header .logo { 
-  width: 180px !important;  
+  width: 200px !important;  
 } 
 
 header nav a { color: #cccccc; text-decoration: none; font-size: 1.1rem; font-family: 'Arial Black', sans-serif; }
