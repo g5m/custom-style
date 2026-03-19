@@ -51,31 +51,30 @@ button:hover { transform: scale(1.05); background: #222222; }
    CABEÇALHO (PRETO) E VITRINE (BRANCA)
    ========================================= */
 header { 
-  display: flex; 
-  justify-content: space-around; /* AJUSTE PARA CENTRALIZAR O CONTAINER DA LOGO */
+  display: grid; 
+  grid-template-columns: 1fr auto 1fr; /* O segredo para cravar a logo no centro exato */
   align-items: center; 
-  padding: 20px 5%; 
-  background-color: #000000; /* Cabeçalho Preto */
+  padding: 10px 5%; /* Diminuímos o espaçamento para a faixa preta ficar menor */
+  background-color: #000000; 
   color: #ffffff;
 }
 
-/* CONTAINER PARA CENTRALIZAR A LOGO NO HEADER */
+/* Container da logo no centro */
 .logo-container {
   display: flex;
   justify-content: center;
-  flex: 1; /* Ocupa o espaço central disponível */
 }
 
-/* AJUSTE PARA O CARRINHO FICAR NA DIREITA */
+/* Carrinho jogado para a extrema direita */
 header nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-/* LOGO AUMENTADA NO HEADER */
+/* Tamanho da logo ajustado para não estourar a faixa preta */
 header .logo { 
-  width: 250px !important; 
+  width: 180px !important; 
   height: auto;
 } 
 
@@ -135,17 +134,18 @@ header nav a:hover { color: #ffffff; }
   box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
 
-/* CENTRALIZANDO E AUMENTANDO A LOGO NA TELA DE LOGIN */
+/* CENTRALIZANDO A LOGO NA TELA DE LOGIN */
 #loginScreen .caixa {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 #loginScreen .logo {
-  width: 300px !important; /* Logo maior no login */
+  width: 220px !important; /* Maior que a original, mas sem estragar a proporção */
   height: auto;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 #modal .caixa { max-width: 500px; }
