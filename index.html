@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custom Style | Loja Virtual</title>
   
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=9999">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
     <div class="caixa">
       <img src="logo.png" alt="Logo" class="logo" onerror="this.style.display='none'">
       <h2>Bem-vindo(a)</h2>
-      <button onclick="entrarNaLoja()">Entrar na Loja</button>
+      <button onclick="entrarNaLoja()">Acessar a Loja</button>
     </div>
   </div>
 
@@ -25,16 +25,16 @@
     <header>
       <img src="logo.png" alt="Logo" class="logo" onerror="this.src='https://via.placeholder.com/240x80?text=LOGO'">
       <nav>
-        <a href="#" onclick="abrirCheckout()">🛒 Carrinho (<span id="cart-badge">0</span>)</a>
+        <a href="#" onclick="abrirCheckout()"> CARRINHO (<span id="cart-badge">0</span>)</a>
       </nav>
     </header>
 
-<section class="hero">
+    <section class="hero">
       <h1>Sua ideia. <br><span class="destaque">Sua regra.</span></h1>
       <p>Esqueça as coleções prontas. Aqui você personaliza o seu streetwear do jeito que quiser. Seja verdadeiramente único.</p>
     </section>
 
-<div class="products" id="products"></div>
+    <div class="products" id="products"></div>
 
     <footer class="rodape">
       <div class="rodape-esq">
@@ -83,10 +83,10 @@
         </div>
       </div>
     </footer>
-  </div>
-  
+  </div> 
   <div id="modal" class="tela-cheia" style="display: none;">
-    <div class="caixa" style="max-width: 450px;"> <img id="modalImg" src="" alt="Produto" class="img-produto-destaque" style="height: 280px;">
+    <div class="caixa" style="max-width: 450px;"> 
+      <img id="modalImg" src="" alt="Produto" class="img-produto-destaque" style="height: 280px;">
       <h2 id="modalNome" style="margin-bottom: 5px;"></h2>
       <p id="modalPreco" class="preco-destaque" style="margin-top: 5px;"></p>
 
@@ -114,7 +114,7 @@
     </div>
   </div>
 
-<div id="checkout">
+  <div id="checkout">
     <div class="carrinho-gaveta">
       <div class="carrinho-header">
         <h2>Carrinho de compras</h2>
@@ -136,12 +136,12 @@
         </div>
         
         <button onclick="finalizarCompra()" style="border-radius: 4px; padding: 15px; margin-bottom: 15px; font-size: 0.9rem;">INICIAR FINALIZAÇÃO</button>
-        
         <a href="#" onclick="fecharCheckout()" class="link-voltar" style="display: block; text-align: center; text-decoration: underline;">Ver mais produtos</a>
       </div>
     </div>
   </div>
     
+  <div id="paymentScreen" class="tela-cheia" style="display: none;">
     <div class="caixa" id="caixa-pagamento">
       <h2 style="margin-bottom: 20px;">Pagamento</h2>
       <p class="texto-cinza">Valor total: <strong id="total-pagamento" class="preco-destaque" style="font-size: 1.2rem;"></strong></p>
@@ -161,8 +161,8 @@
       <p class="texto-cinza">Obrigado por comprar na Custom Style. Seu pedido já está sendo separado.</p>
       <button onclick="voltarParaLoja()" style="margin-top: 25px;">Continuar Comprando</button>
     </div>
-
   </div>
-  <script src="script.js"></script>
+
+  <script src="script.js?v=9999"></script>
 </body>
 </html>
