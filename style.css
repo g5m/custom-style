@@ -11,6 +11,7 @@
 
 body {
   margin: 0;
+  /* TODA A FONTE DO SITE ESTÁ EM ARIAL BLACK/IMPACT */
   font-family: 'Arial Black', Impact, sans-serif; 
   background: var(--bg-page);
   color: var(--text-main);
@@ -51,16 +52,31 @@ button:hover { transform: scale(1.05); background: #222222; }
    ========================================= */
 header { 
   display: flex; 
-  justify-content: space-between; 
+  justify-content: space-around; /* AJUSTE PARA CENTRALIZAR O CONTAINER DA LOGO */
   align-items: center; 
   padding: 20px 5%; 
   background-color: #000000; /* Cabeçalho Preto */
   color: #ffffff;
 }
 
-/* Deixa a logo branca no cabeçalho preto (se ela for originalmente preta) */
+/* CONTAINER PARA CENTRALIZAR A LOGO NO HEADER */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  flex: 1; /* Ocupa o espaço central disponível */
+}
+
+/* AJUSTE PARA O CARRINHO FICAR NA DIREITA */
+header nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* LOGO AUMENTADA NO HEADER */
 header .logo { 
-  width: 200px !important;  
+  width: 250px !important; 
+  height: auto;
 } 
 
 header nav a { color: #cccccc; text-decoration: none; font-size: 1.1rem; font-family: 'Arial Black', sans-serif; }
@@ -118,11 +134,22 @@ header nav a:hover { color: #ffffff; }
   max-width: 350px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
+
+/* CENTRALIZANDO E AUMENTANDO A LOGO NA TELA DE LOGIN */
+#loginScreen .caixa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loginScreen .logo {
+  width: 300px !important; /* Logo maior no login */
+  height: auto;
+  margin-bottom: 40px;
+}
+
 #modal .caixa { max-width: 500px; }
 .img-produto-destaque { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
-
-/* A logo no login/modal não inverte se o fundo já é branco */
-.caixa .logo { width: 180px; margin-bottom: 40px; } 
 
 /* =========================================
    TAMANHO E QUANTIDADE
