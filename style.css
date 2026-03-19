@@ -163,21 +163,67 @@ header nav a:hover { color: #ffffff; }
 }
 
 /* =========================================
-   CARRINHO E PAGAMENTO (FAKE CHECKOUT)
+   CARRINHO LATERAL (GAVETA) E PAGAMENTO
    ========================================= */
-.lista-carrinho { list-style: none; padding: 0; text-align: left; max-height: 250px; overflow-y: auto; margin-bottom: 20px; }
-.cart-item { display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
 
+/* Fundo escuro que cobre o site todo */
+#checkout {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6) !important;
+  z-index: 9500;
+  display: flex;
+  justify-content: flex-end; /* Joga a gaveta pra direita */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Quando o carrinho é ativado */
+#checkout.aberto { opacity: 1; visibility: visible; }
+
+/* A Gaveta Branca que desliza */
+.carrinho-gaveta {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%); /* Esconde fora da tela na direita */
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  color: #000000;
+}
+
+#checkout.aberto .carrinho-gaveta { transform: translateX(0); /* Faz a gaveta entrar */ }
+
+/* Cabeçalho, Corpo e Rodapé da Gaveta */
+.carrinho-header {
+  padding: 20px 25px;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.carrinho-header h2 { margin: 0; font-size: 1.1rem; text-transform: uppercase; font-family: 'Arial Black', sans-serif;}
+.btn-fechar { background: transparent; color: #000; font-size: 1.5rem; border: none; cursor: pointer; width: auto; padding: 0; }
+.btn-fechar:hover { background: transparent; transform: scale(1.1); color: #666; }
+
+.carrinho-body { flex: 1; padding: 25px; overflow-y: auto; }
+
+.carrinho-footer { padding: 25px; border-top: 1px solid #eeeeee; background: #fafafa; }
+.carrinho-footer-linha { display: flex; justify-content: space-between; margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 0.9rem; color: #666; }
+.carrinho-footer-total { display: flex; justify-content: space-between; font-size: 1.3rem; font-family: 'Arial Black', sans-serif; margin-bottom: 25px; color: #000; }
+
+/* Lista de Produtos no Carrinho */
+.lista-carrinho { list-style: none; padding: 0; margin: 0; }
+.cart-item { display: flex; gap: 15px; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 20px; }
+
+/* Telas de Pagamento Falso */
 .opcoes-pagamento { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
 .btn-pagamento {
-  background: #ffffff;
-  color: #000000;
-  border: 1px solid #cccccc;
-  padding: 15px;
-  border-radius: 10px;
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  transition: all 0.3s ease;
+  background: #ffffff; color: #000000; border: 1px solid #cccccc; padding: 15px;
+  border-radius: 10px; font-family: Arial, sans-serif; font-weight: bold; transition: all 0.3s ease;
 }
 .btn-pagamento:hover { background: #f9f9f9; border-color: #000000; transform: translateY(-2px); }
 
