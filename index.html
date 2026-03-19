@@ -114,16 +114,33 @@
     </div>
   </div>
 
-  <div id="checkout" class="tela-cheia" style="display: none;">
-    <div class="caixa" style="max-width: 450px;">
-      <h2 style="margin-bottom: 20px;">Seu Carrinho</h2>
-      <ul id="listaCarrinho" class="lista-carrinho"></ul>
-      <h3 id="total" class="preco-destaque">Total: R$ 0,00</h3>
-      <button onclick="finalizarCompra()" style="margin-bottom: 15px;">Ir para o Pagamento</button>
-      <a href="#" onclick="fecharCheckout()" class="link-voltar">Continuar Comprando</a>
+<div id="checkout">
+    <div class="carrinho-gaveta">
+      <div class="carrinho-header">
+        <h2>Carrinho de compras</h2>
+        <button class="btn-fechar" onclick="fecharCheckout()">✕</button>
+      </div>
+      
+      <div class="carrinho-body">
+        <ul id="listaCarrinho" class="lista-carrinho"></ul>
+      </div>
+
+      <div class="carrinho-footer">
+        <div class="carrinho-footer-linha">
+          <span>Subtotal (sem frete)</span>
+          <span id="subtotal">R$ 0,00</span>
+        </div>
+        <div class="carrinho-footer-total">
+          <span>Total:</span>
+          <span id="total">R$ 0,00</span>
+        </div>
+        
+        <button onclick="finalizarCompra()" style="border-radius: 4px; padding: 15px; margin-bottom: 15px; font-size: 0.9rem;">INICIAR FINALIZAÇÃO</button>
+        
+        <a href="#" onclick="fecharCheckout()" class="link-voltar" style="display: block; text-align: center; text-decoration: underline;">Ver mais produtos</a>
+      </div>
     </div>
   </div>
-<div id="paymentScreen" class="tela-cheia" style="display: none;">
     
     <div class="caixa" id="caixa-pagamento">
       <h2 style="margin-bottom: 20px;">Pagamento</h2>
